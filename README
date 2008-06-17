@@ -1,13 +1,46 @@
-SimplifiedBreadcrumbs
-=====================
+Simplified Breadcrumbs
+======================
 
-Introduction goes here.
-
+A nice way to add breadcrumbs to your application. Antonio Cangiano posted a 
+link in the Ruby on Rails weblog to a post which talked about adding breadcrumbs 
+to your Rails application. I've been doing this with helpers, but as the post
+says this is "Easy and flexible". So I've created the plugin.
 
 Example
 =======
 
-Example goes here.
+  ##
+  # app/controllers/application.rb
+  #
+  class ApplicationController < ActionController::Base
+    add_breadcrumb 'Home', '/'
+    ...
+  end
 
+  ##
+  # app/controllers/things_controller.rb_
+  #
+  class ThingsController < ApplicationController
+    add_breadcrumb 'Things', 'things_path'
+    add_breadcrumb 'Create a new thing', '', :only => [:new, :create]
+    add_breadcrumb 'Edit a thing', '', :only => [:edit, :update]
 
-Copyright (c) 2008 [name of plugin creator], released under the MIT license
+    def show
+      @thing = Thing.find(params[:id])
+      add_breadcrumb @thing.name, ''
+    end
+    …
+  end
+
+  ##
+  # app/views/layouts/application.html.erb
+  #
+  <%= breadcrumbs %>
+  <%= breadcrumbs("=>") %> <!-- You can define the separator you want -->
+
+Acknowledgments
+===============
+
+- Przemysław Kowalczyk for his post http://szeryf.wordpress.com/2008/06/13/easy-and-flexible-breadcrumbs-for-rails/
+
+Copyright (c) 2008 Francesc Esplugas Marti, released under the MIT license
