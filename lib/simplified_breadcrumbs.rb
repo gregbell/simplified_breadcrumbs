@@ -20,7 +20,7 @@ module SimplifiedBreadcrumbs
 
   module Helper
 
-    def breadcrumbs(separator = "&rsaquo;")
+    def breadcrumb(separator = "&rsaquo;")
       @breadcrumbs.map { |txt, path| link_to_unless(path.blank?, h(txt), path) }.join(" #{separator} ")
     end
 

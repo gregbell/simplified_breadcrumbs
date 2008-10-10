@@ -35,8 +35,8 @@ says this is "Easy and flexible". So I've created the plugin.
   ##
   # app/views/layouts/application.html.erb
   #
-  <%= breadcrumbs %>
-  <%= breadcrumbs("=>") %> <!-- You can define the separator you want -->
+  <%= breadcrumb %>
+  <%= breadcrumb("=>") %> <!-- You can define the separator you want -->
 
 == Acknowledgments
 
