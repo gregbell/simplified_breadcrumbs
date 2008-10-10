@@ -21,7 +21,7 @@ says this is "Easy and flexible". So I've created the plugin.
   #
   class ThingsController < ApplicationController
 
-    add_breadcrumb 'Things', 'things_path'
+    add_breadcrumb 'Things', :things_path
     add_breadcrumb 'Create a new thing', '', :only => [:new, :create]
     add_breadcrumb 'Edit a thing', '', :only => [:edit, :update]
 

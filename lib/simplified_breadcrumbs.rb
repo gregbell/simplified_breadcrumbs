@@ -6,7 +6,7 @@ module SimplifiedBreadcrumbs
 
     def add_breadcrumb name, url = ''
       @breadcrumbs ||= []
-      url = eval(url) if url =~ /_path|_url/
+      url = send(url) if url.is_a?(Symbol)
       @breadcrumbs << [name, url]
     end
 
